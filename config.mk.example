@@ -1,3 +1,6 @@
 
+# ARM toolchain prefix
 TOOLCHAIN       ?= $(HOME)/local/gcc-arm-none-eabi-4_6-2012q1/bin/arm-none-eabi-
-FREERTOS_PREFIX ?= $(PWD)/FreeRTOS-source
+
+# Path to FreeRTOS source
+FREERTOS_PREFIX ?=
