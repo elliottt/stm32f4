@@ -14,6 +14,7 @@ include board/stm32f4.mk
 CFLAGS += -Iinclude
 
 include toolchain.mk
+include FreeRTOS/build.mk
 include stm32f4/build.mk
 include stm32f4/usb/build.mk
-include FreeRTOS/build.mk
+include stm32f4/tests/ledtest/build.mk

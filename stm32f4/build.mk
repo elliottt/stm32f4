@@ -29,8 +29,6 @@ stm32f4/build/libstm32f4.a: | stm32f4/build
 $(libstm32f4.a_OBJECTS): stm32f4/build/%.o: stm32f4/src/%.c
 	$(CC) -o $@ $(CFLAGS) -c $<
 
-all: stm32f4/build/libstm32f4.a
-
 stm32f4/build:
 	mkdir -p $@
 
