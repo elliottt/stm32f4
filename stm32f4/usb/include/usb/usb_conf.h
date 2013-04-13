@@ -61,7 +61,7 @@
  //#define USE_USB_OTG_FS
 #endif /* USE_USB_OTG_FS */
 
-#ifdef USE_USB_OTG_FS 
+#ifdef USE_USB_OTG_FS
  #define USB_OTG_FS_CORE
 #endif
 
