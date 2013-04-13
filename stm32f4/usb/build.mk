@@ -15,7 +15,7 @@ libstm32_usb.a_SOURCES := $(addprefix stm32f4/usb/src/,\
 libstm32_usb.a_OBJECTS := $(patsubst stm32f4/usb/src/%.c,stm32f4/usb/build/%.o,$(libstm32_usb.a_SOURCES))
 
 stm32f4/usb/build/%.o: stm32f4/usb/src/%.c
-	$(CC) -o $@ $(CFLAGS) $<
+	$(CC) -o $@ $(CFLAGS) -c $<
 
 $(eval $(call toolchain,stm32f4/usb/build/libstm32_usb.a))
 stm32f4/usb/build/libstm32_usb.a: OBJECTS := $(libstm32_usb.a_OBJECTS)
