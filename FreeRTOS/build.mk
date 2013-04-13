@@ -25,8 +25,6 @@ FreeRTOS_local_OBJECTS := $(patsubst FreeRTOS/support/%.c,FreeRTOS/build/%.o,$(F
 
 libFreeRTOS.a_OBJECTS := $(FreeRTOS_local_OBJECTS) $(FreeRTOS_OBJECTS)
 
-$(warning $(libFreeRTOS.a_OBJECTS))
-
 $(FreeRTOS_local_OBJECTS): FreeRTOS/build/%.o: FreeRTOS/support/%.c
 	$(CC) -o $@ $(CFLAGS) -c $<
 
