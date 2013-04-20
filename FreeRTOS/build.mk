@@ -11,9 +11,10 @@ FreeRTOS_SOURCES := $(addprefix $(FREERTOS_PREFIX)/FreeRTOS/Source/,\
   portable/GCC/ARM_CM4F/port.c               \
   portable/MemMang/heap_1.c)
 
-FreeRTOS_OBJECTS := $(patsubst %.c,%.o,$(FreeRTOS_SOURCES))
+FreeRTOS_OBJECTS := \
+  $(patsubst $(FREERTOS_PREFIX)/FreeRTOS/Source/%.c,FreeRTOS/build/%.o,$(FreeRTOS_SOURCES))
 
-$(FreeRTOS_OBJECTS): %.o: %.c
+$(FreeRTOS_OBJECTS): FreeRTOS/build/%.o: $(FREERTOS_PREFIX)/FreeRTOS/Source/%.c
 	$(call cmd,cc_o_c)
 
 FreeRTOS_local_SOURCES := $(addprefix FreeRTOS/support/,\
@@ -31,10 +32,11 @@ $(FreeRTOS_local_OBJECTS): FreeRTOS/build/%.o: FreeRTOS/support/%.c
 FreeRTOS/build/libFreeRTOS.a: OBJECTS := $(libFreeRTOS.a_OBJECTS)
 FreeRTOS/build/libFreeRTOS.a: CFLAGS  += -I$(FREERTOS_INCLUDES)
 FreeRTOS/build/libFreeRTOS.a: $(libFreeRTOS.a_OBJECTS)
-FreeRTOS/build/libFreeRTOS.a: | FreeRTOS/build
+FreeRTOS/build/libFreeRTOS.a: | FreeRTOS/build/portable/GCC/ARM_CM4F \
+                                FreeRTOS/build/portable/MemMang
 	$(call cmd,ar)
 
-FreeRTOS/build:
+FreeRTOS/build/portable/GCC/ARM_CM4F FreeRTOS/build/portable/MemMang:
 	$(call cmd,mkdir)
 
 clean::
