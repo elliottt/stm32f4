@@ -36,7 +36,16 @@ FreeRTOS/build/libFreeRTOS.a: | FreeRTOS/build/portable/GCC/ARM_CM4F \
                                 FreeRTOS/build/portable/MemMang
 	$(call cmd,ar)
 
-FreeRTOS/build/portable/GCC/ARM_CM4F FreeRTOS/build/portable/MemMang:
+FreeRTOS/build/portable/GCC/ARM_CM4F: | FreeRTOS/build/portable/GCC
+	$(call cmd,mkdir)
+
+FreeRTOS/build/portable/GCC FreeRTOS/build/portable/MemMang: | FreeRTOS/build/portable
+	$(call cmd,mkdir)
+
+FreeRTOS/build/portable: | FreeRTOS/build
+	$(call cmd,mkdir)
+
+FreeRTOS/build:
 	$(call cmd,mkdir)
 
 clean::

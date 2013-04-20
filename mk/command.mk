@@ -25,4 +25,4 @@ quiet_cmd_link   = LINK    $@
       cmd_link   = "$(CC)" -o "$@" $(LDFLAGS) "-Wl,-Map=$@.map" $(OBJECTS) $(LIBS)
 
 quiet_cmd_mkdir  = MKDIR   $@
-      cmd_mkdir  = mkdir -p "$@"
+      cmd_mkdir  = mkdir "$@"
