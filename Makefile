@@ -8,9 +8,10 @@ clean::
 CFLAGS := -Iinclude
 
 include config.mk
-include arch/cortex-m4.mk
-include board/stm32f4.mk
-include toolchain.mk
+include mk/arch/cortex-m4.mk
+include mk/board/stm32f4.mk
+include mk/toolchain.mk
+include mk/command.mk
 include source/build.mk
 include FreeRTOS/build.mk
 include stm32f4/build.mk

@@ -24,13 +24,13 @@ stm32f4/build/libstm32f4.a: stm32f4/usb/build/libstm32_usb.a
 stm32f4/build/libstm32f4.a: FreeRTOS/build/libFreeRTOS.a
 stm32f4/build/libstm32f4.a: $(libstm32f4.a_OBJECTS)
 stm32f4/build/libstm32f4.a: | stm32f4/build
-	ar rcs $@ $(OBJECTS)
+	$(call cmd,ar)
 
 $(libstm32f4.a_OBJECTS): stm32f4/build/%.o: stm32f4/src/%.c
-	$(CC) -o $@ $(CFLAGS) -c $<
+	$(call cmd,cc_o_c)
 
 stm32f4/build:
-	mkdir -p $@
+	$(call cmd,mkdir)
 
 clean::
 	$(RM) -r stm32f4/build
