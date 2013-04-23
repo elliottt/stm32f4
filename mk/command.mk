@@ -26,3 +26,9 @@ quiet_cmd_link   = LINK    $@
 
 quiet_cmd_mkdir  = MKDIR   $@
       cmd_mkdir  = mkdir "$@"
+
+quiet_cmd_bin    = BIN     $@
+      cmd_bin    = "$(OBJCOPY)" -O binary "$<" "$@"
+
+quiet_cmd_ihex   = IHEX    $@
+      cmd_ihex   = "$(OBJCOPY)" -O ihex "$<" "$@"

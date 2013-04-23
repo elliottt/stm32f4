@@ -19,11 +19,17 @@ stm32f4/tests/ledtest/ledtest: $(ledtest_OBJECTS) $(STARTUP_OBJECTS)
 	$(call cmd,link)
 
 stm32f4/tests/ledtest/ledtest.bin: stm32f4/tests/ledtest/ledtest
-	$(OBJCOPY) -O binary $< $@
+	$(call cmd,bin)
 
-all: stm32f4/tests/ledtest/ledtest
+stm32f4/tests/ledtest/ledtest.ihex: stm32f4/tests/ledtest/ledtest
+	$(call cmd,ihex)
+
+all: stm32f4/tests/ledtest/ledtest     \
+     stm32f4/tests/ledtest/ledtest.bin \
+     stm32f4/tests/ledtest/ledtest.ihex
 
 clean::
 	$(RM) $(ledtest_OBJECTS)
 	$(RM) stm32f4/tests/ledtest/ledtest
 	$(RM) stm32f4/tests/ledtest/ledtest.bin
+	$(RM) stm32f4/tests/ledtest/ledtest.ihex
